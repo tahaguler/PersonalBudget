@@ -1,6 +1,4 @@
-using System;
-
-namespace PersonalBudget.Models
+namespace PersonalBudget.Api.Models
 {
     public class ErrorViewModel
     {
