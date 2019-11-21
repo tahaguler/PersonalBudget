@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PersonalBudget.Api.Models
 {
-    [Table("BudgetLog")]
-    public class BudgetLog
+    [Table("BudgetExpense")]
+    public class BudgetExpense
     {
         [Key] public int Id { get; set; }
         public int BudgetId { get; set; }

@@ -1,10 +1,16 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PersonalBudget.Api.Models;
+using PersonalBudget.Api.Models.RequestModels;
+using PersonalBudget.Api.Services;
+using System;
+using System.Collections.Generic;
+using System.Net;
 
 namespace PersonalBudget.Api.Controllers
 {
+    [ApiController]
+    [Route("api/PersonalBudget")]
     public class MainController : Controller
     {
         private readonly ILogger<MainController> _logger;
@@ -14,20 +20,37 @@ namespace PersonalBudget.Api.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+
+        // GET: api/personalbudget
+        [HttpGet]
+        public IEnumerable<Budget> GetAllBudgets()
         {
-            return View();
+            PersonalBudgetService personalBudgetService = new PersonalBudgetService();
+            return personalBudgetService.GetAllBudget();
         }
 
-        public IActionResult Privacy()
+        // POST: api/personalbudget
+        [HttpPost]
+        public HttpStatusCode PostBudget([FromBody] AddBudgetRequest addBudgetRequest)
         {
-            return View();
+            try
+            {
+                PersonalBudgetService personalBudgetService = new PersonalBudgetService();
+                Budget budget = personalBudgetService.ParseAddBudgetRequestToBudget(addBudgetRequest);
+                personalBudgetService.CreateNewBudget(budget);
+                return HttpStatusCode.OK;
+            }
+            catch (Exception exc)
+            {
+                return HttpStatusCode.InternalServerError;
+            }
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        // POST: api/personalbudget
+        [HttpPost("{budgetId}")]
+        public HttpStatusCode PostExpenses(int budgetId, [FromBody] string description, string amount)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return HttpStatusCode.OK;
         }
     }
 }

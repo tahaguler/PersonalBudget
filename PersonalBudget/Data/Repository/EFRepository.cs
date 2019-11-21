@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
-using System.Threading;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PersonalBudget.Api.Data.Repository
@@ -19,14 +18,45 @@ namespace PersonalBudget.Api.Data.Repository
             _dbSet = dbContext.Set<T>();
         }
 
+        public IEnumerable<T> GetAll()
+        {
+            return _dbSet;
+        }
+
+        public async Task<int> Update(T entity)
+        {
+            int result;
+            try
+            {
+                _dbSet.Attach(entity);
+                _dbContext.Entry(entity).State = EntityState.Modified;
+                result = await _dbContext.SaveChangesAsync();
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
         public void Add(T Entity)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<EntityEntry<T>> AddAsync(T entity, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<int> AddAsync(T entity)
         {
-            return _dbSet.AddAsync(entity, cancellationToken);
+            int result = 0;
+            try
+            {
+                await _dbSet.AddAsync(entity);
+                result = await _dbContext.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+            }
+            return result;
         }
     }
 }

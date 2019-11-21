@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PersonalBudget.Api.Models
 {
@@ -13,6 +10,7 @@ namespace PersonalBudget.Api.Models
         [Key] public int Id { get; set; }
         public string Name { get; set; }
         public string Category { get; set; }
+        public decimal Amount { get; set; }
         public DateTime CreateDate { get; set; }
         public string CreateUser { get; set; }
         public DateTime? UpdateDate { get; set; }
