@@ -1,15 +1,12 @@
-﻿using PersonalBudget.Api.Data;
-using PersonalBudget.Api.Data.Repository;
-using PersonalBudget.Api.Helpers;
-using PersonalBudget.Api.Models;
-using PersonalBudget.Api.Models.RequestModels;
+﻿using PersonalBudget.Core.Budget;
+using PersonalBudget.EntityFrameworkCore.Repository;
 using System.Collections.Generic;
 
-namespace PersonalBudget.Api.Services
+namespace PersonalBudget.Application.Budget
 {
-    public class PersonalBudgetService
+    public class BudgetAppService
     {
-        IRepository<Budget> supplyRepo = new EFRepository<Budget>(new DbContextPublic());
+        IRepository<Budget> supplyRepo = new EFRepository<Budget>(new PersonalBudgetDbContext());
 
         public IEnumerable<Budget> GetAllBudget()
         {
@@ -17,7 +14,7 @@ namespace PersonalBudget.Api.Services
             return budgetList;
         }
 
-        public Budget ParseAddBudgetRequestToBudget(AddBudgetRequest addBudgetRequest)
+        public Budget ParseAddBudgetRequestToBudget(BudgetDto addBudgetRequest)
         {
             Budget budget = new Budget();
             budget.Name = addBudgetRequest.Name;
@@ -35,3 +32,5 @@ namespace PersonalBudget.Api.Services
         }
     }
 }
+
+

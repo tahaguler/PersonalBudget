@@ -1,6 +1,6 @@
-﻿namespace PersonalBudget.Api.Models.RequestModels
+﻿namespace PersonalBudget.Core.Budget
 {
-    public class AddBudgetRequest
+    public class BudgetDto
     {
         public string Name { get; set; }
         public string Category { get; set; }

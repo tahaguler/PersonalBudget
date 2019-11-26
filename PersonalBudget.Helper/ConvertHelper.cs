@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace PersonalBudget.Api.Helpers
+namespace PersonalBudget.Helper
 {
     public class ConvertHelper
     {

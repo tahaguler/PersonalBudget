@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PersonalBudget.Api.Models;
-using PersonalBudget.Api.Models.RequestModels;
-using PersonalBudget.Api.Services;
+using PersonalBudget.Core.Budget;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -31,7 +29,7 @@ namespace PersonalBudget.Api.Controllers
 
         // POST: api/personalbudget
         [HttpPost]
-        public HttpStatusCode PostBudget([FromBody] AddBudgetRequest addBudgetRequest)
+        public HttpStatusCode PostBudget([FromBody] BudgetDto addBudgetRequest)
         {
             try
             {

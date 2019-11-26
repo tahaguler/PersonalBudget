@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PersonalBudget.Api.Models
+namespace PersonalBudget.Core.Budget
 {
     [Table(("Budget"))]
     public class Budget

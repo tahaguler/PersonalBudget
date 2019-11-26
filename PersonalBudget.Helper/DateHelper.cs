@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PersonalBudget.Api.Helpers
+namespace PersonalBudget.Helper
 {
     public class DateHelper
     {
