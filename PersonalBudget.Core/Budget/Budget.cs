@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PersonalBudget.Core.Budget
 {
-    [Table(("Budget"))]
+    [Table("Budget")]
     public class Budget
     {
         [Key] public int Id { get; set; }

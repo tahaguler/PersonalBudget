@@ -7,13 +7,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalBudget.Api", "Perso
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalBudget.Test", "PersonalBudget.Test\PersonalBudget.Test.csproj", "{EA6C9FAB-3BD1-4D3A-9058-F0BFAF39A912}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalBudget.EntityFrameworkCore", "PersonalBudget.EntityFrameworkCore\PersonalBudget.EntityFrameworkCore.csproj", "{7D65DC52-2AC7-4FF1-8EED-68AE85E104DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalBudget.EntityFrameworkCore", "PersonalBudget.EntityFrameworkCore\PersonalBudget.EntityFrameworkCore.csproj", "{7D65DC52-2AC7-4FF1-8EED-68AE85E104DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalBudget.Core", "PersonalBudget.Core\PersonalBudget.Core.csproj", "{72784AEB-7218-4EBA-9501-372B8FE136B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalBudget.Core", "PersonalBudget.Core\PersonalBudget.Core.csproj", "{72784AEB-7218-4EBA-9501-372B8FE136B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalBudget.Helper", "PersonalBudget.Helper\PersonalBudget.Helper.csproj", "{E49E327B-38F1-41FD-ABDF-9187D3F766F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalBudget.Helper", "PersonalBudget.Helper\PersonalBudget.Helper.csproj", "{E49E327B-38F1-41FD-ABDF-9187D3F766F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalBudget.Application", "PersonalBudget.Application\PersonalBudget.Application.csproj", "{85EA7046-7F88-4D1B-A294-A4EE91173904}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalBudget.Application", "PersonalBudget.Application\PersonalBudget.Application.csproj", "{85EA7046-7F88-4D1B-A294-A4EE91173904}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E49E327B-38F1-41FD-ABDF-9187D3F766F2} = {E49E327B-38F1-41FD-ABDF-9187D3F766F2}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalBudget.Extension", "PersonalBudget.Extension\PersonalBudget.Extension.csproj", "{DB8168DC-0288-47E3-B32C-41FE45F5F8CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +50,10 @@ Global
 		{85EA7046-7F88-4D1B-A294-A4EE91173904}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85EA7046-7F88-4D1B-A294-A4EE91173904}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85EA7046-7F88-4D1B-A294-A4EE91173904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB8168DC-0288-47E3-B32C-41FE45F5F8CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB8168DC-0288-47E3-B32C-41FE45F5F8CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB8168DC-0288-47E3-B32C-41FE45F5F8CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB8168DC-0288-47E3-B32C-41FE45F5F8CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

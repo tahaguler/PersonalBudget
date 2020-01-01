@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PersonalBudget.Core\PersonalBudget.Core.csproj" />
     <ProjectReference Include="..\PersonalBudget.EntityFrameworkCore\PersonalBudget.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\PersonalBudget.Helper\PersonalBudget.Helper.csproj" />
   </ItemGroup>
 
 </Project>

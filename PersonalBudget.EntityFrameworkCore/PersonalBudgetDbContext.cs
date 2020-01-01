@@ -3,7 +3,7 @@ using PersonalBudget.Core.Budget;
 
 namespace PersonalBudget.EntityFrameworkCore
 {
-    class PersonalBudgetDbContext : DbContext
+ public    class PersonalBudgetDbContext : DbContext
     {
         public PersonalBudgetDbContext(DbContextOptions<PersonalBudgetDbContext> options) : base(options)
         // ToDo: Learn what does this base thing mean
@@ -11,7 +11,7 @@ namespace PersonalBudget.EntityFrameworkCore
 
         }
         public DbSet<Budget> Budgets { get; set; }
-        public DbSet<BudgetExpense> BudgetLogs { get; set; }
+        public DbSet<BudgetExpense> BudgetExpenses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

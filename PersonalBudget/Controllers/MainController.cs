@@ -4,27 +4,28 @@ using PersonalBudget.Core.Budget;
 using System;
 using System.Collections.Generic;
 using System.Net;
+using PersonalBudget.Application.Budget;
 
 namespace PersonalBudget.Api.Controllers
 {
     [ApiController]
     [Route("api/PersonalBudget")]
-    public class MainController : Controller
+    public class MainController : ControllerBase
     {
+        private readonly IBudgetAppService _budgetAppService;
         private readonly ILogger<MainController> _logger;
 
-        public MainController(ILogger<MainController> logger)
+        public MainController(IBudgetAppService budgetAppService, ILogger<MainController> logger)
         {
+            _budgetAppService = budgetAppService;
             _logger = logger;
         }
-
 
         // GET: api/personalbudget
         [HttpGet]
         public IEnumerable<Budget> GetAllBudgets()
         {
-            PersonalBudgetService personalBudgetService = new PersonalBudgetService();
-            return personalBudgetService.GetAllBudget();
+            return _budgetAppService.GetAllBudget();
         }
 
         // POST: api/personalbudget
@@ -33,9 +34,9 @@ namespace PersonalBudget.Api.Controllers
         {
             try
             {
-                PersonalBudgetService personalBudgetService = new PersonalBudgetService();
-                Budget budget = personalBudgetService.ParseAddBudgetRequestToBudget(addBudgetRequest);
-                personalBudgetService.CreateNewBudget(budget);
+                //  Budget budget = _budgetAppService.ParseAddBudgetRequestToBudget(addBudgetRequest);
+
+                //_budgetAppService.CreateNewBudget(budget);
                 return HttpStatusCode.OK;
             }
             catch (Exception exc)

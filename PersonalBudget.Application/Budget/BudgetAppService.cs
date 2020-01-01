@@ -1,36 +1,37 @@
 ﻿using PersonalBudget.Core.Budget;
+using PersonalBudget.EntityFrameworkCore;
 using PersonalBudget.EntityFrameworkCore.Repository;
+using PersonalBudget.Helper;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
 
 namespace PersonalBudget.Application.Budget
 {
-    public class BudgetAppService
+    public class BudgetAppService : IBudgetAppService
     {
-        IRepository<Budget> supplyRepo = new EFRepository<Budget>(new PersonalBudgetDbContext());
+        private readonly IRepository<Core.Budget.Budget> _budgetRepo;
+        private readonly IRepository<BudgetExpense> _budgetExpenseRepository;
+        private readonly IMapper _mapper;
 
-        public IEnumerable<Budget> GetAllBudget()
+        public BudgetAppService(IRepository<Core.Budget.Budget> budgetRepo, IRepository<BudgetExpense> budgetExpenseRepository, IMapper mapper)
         {
-            IEnumerable<Budget> budgetList = supplyRepo.GetAll();
+            _budgetRepo = budgetRepo;
+            _budgetExpenseRepository = budgetExpenseRepository;
+            _mapper = mapper;
+        }
+
+        public IEnumerable<Core.Budget.Budget> GetAllBudget()
+        {
+            IEnumerable<Core.Budget.Budget> budgetList = _budgetRepo.GetAll();
             return budgetList;
         }
 
-        public Budget ParseAddBudgetRequestToBudget(BudgetDto addBudgetRequest)
-        {
-            Budget budget = new Budget();
-            budget.Name = addBudgetRequest.Name;
-            budget.Category = addBudgetRequest.Category;
-            budget.CreateUser = addBudgetRequest.CreateUser;
-            budget.TenantId = ConvertHelper.Instance.ConvertToInt(addBudgetRequest.TenantId);
-            return budget;
-        }
-
-        public async void CreateNewBudget(Budget budget)
+        public Task<int> CreateBudget(Core.Budget.Budget budget)
         {
             budget.CreateDate = DateHelper.Instance.GetCurrentUniversalFormat();
             budget.IsDeleted = false;
-            await supplyRepo.AddAsync(budget);
+            throw new System.NotImplementedException();
         }
     }
 }
-
-

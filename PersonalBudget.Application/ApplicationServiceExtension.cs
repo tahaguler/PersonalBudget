@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
+using PersonalBudget.Application.Budget;
 using PersonalBudget.Core.Budget;
 
 namespace PersonalBudget.Application
@@ -8,8 +9,8 @@ namespace PersonalBudget.Application
     {
         public static IServiceCollection AddPersonalBudgetApplication(this IServiceCollection services)
         {
-            services.AddAutoMapper();
-            services.AddTransient<, >();
+            services.AddAutoMapper(typeof(ApplicationMappingProfile));
+            services.AddTransient<IBudgetAppService, BudgetAppService>();
             return services;
         }
     }
